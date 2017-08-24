@@ -27,7 +27,7 @@ app.post("/event/add", function(req, resp) {
 
 app.get("/", function(req, resp) {
     resp.render('index', {
-        name: 'Audrey',
+        name: 'Hayet',
         // adjective: 'happy',
         // nameList: db
         eventsList: events
