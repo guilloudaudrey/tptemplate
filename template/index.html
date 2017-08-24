@@ -12,7 +12,9 @@
     <p>Hello</p>
 
     <form action="/event/add" method="POST">
+        <label for="event_name">Nom de l'événement</label>
         <input type="text" class="event_input" name="nom">
+        <label for="event_name">Lieu</label>
         <input type="text" class="event_input" name="place">
         <button type="submit" class="btn btn-primary btn-md">Valider</button>
         <p>Welcome {{name}}!!!</p>
