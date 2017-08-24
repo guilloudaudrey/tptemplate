@@ -24,10 +24,6 @@ app.post("/event/add", function(req, resp) {
     events.push(event);
     console.log(events);
 
-<<<<<<< HEAD
-    //resp.send('événement ajouté !');
-    /*resp.send('événement ajouté !');*/
-=======
     //   resp.send('événement ajouté !');
 })
 
@@ -37,20 +33,13 @@ app.post("/event/del", function(req, resp) {
 
 
     //   resp.send('événement ajouté !');
->>>>>>> 897c30f1709ee34a82895cc244d4e454354b0c47
 })
 
 app.get("/", function(req, resp) {
     resp.render('index', {
-<<<<<<< HEAD
         name: 'Audrey',
         // adjective: 'happy',
         // nameList: db
-=======
-        name: 'Hayet',
-        //adjective: 'happy',
-        //nameList: db,
->>>>>>> 897c30f1709ee34a82895cc244d4e454354b0c47
         eventsList: events
     });
 });
@@ -71,6 +60,6 @@ app.set('views', './template'); // specify the views directory
 app.set('view engine', 'html'); // register the template engine
 
 
-app.listen(8080, function() {
-    console.log('Example app listening on port8080!');
+app.listen(3000, function() {
+    console.log('Example app listening on port3000!');
 });
