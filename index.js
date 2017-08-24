@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static('template'));
+app.use(express.static('public'));
 
 
 app.post("/event/add", function(req, resp) {
