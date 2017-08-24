@@ -27,6 +27,14 @@ app.post("/event/add", function(req, resp) {
     //   resp.send('événement ajouté !');
 })
 
+app.post("/event/del", function(req, resp) {
+
+
+
+
+    //   resp.send('événement ajouté !');
+})
+
 app.get("/", function(req, resp) {
     resp.render('index', {
         name: 'Hayet',

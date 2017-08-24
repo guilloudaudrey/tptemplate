@@ -20,14 +20,15 @@
         <p>Welcome {{name}}!!!</p>
 
 
-
-        {{#eventsList}}
         <ul>
-
-            <li>{{.}}</li>
-
+            {{#eventsList}}
+            <li>{{name}}
+                <li>{{place}}</li>
+            </li>
+            {{/eventsList}}
         </ul>
-        {{/eventsList}}
+
+
 
 
 
