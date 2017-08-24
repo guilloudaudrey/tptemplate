@@ -12,27 +12,41 @@ app.use(express.static('template'));
 
 
 app.post("/event/add", function(req, resp) {
-    let nom = req.body.nom;
-    let place = req.body.place;
-    console.log(req.body.place);
-    let event = {
-        name: nom,
-        place: place,
-    }
-    events.push(event);
-    console.log(events);
+        let nom = req.body.nom;
+        let place = req.body.place;
+        console.log(req.body.place);
+        let event = {
+            name: nom,
+            place: place,
+        }
+        events.push(event);
+        console.log(events);
 
-    resp.send('événement ajouté !');
-})
-
-app.get("/", function(req, resp) {
-    resp.render('index', {
-        name: 'Audrey',
-        // adjective: 'happy',
-        // nameList: db
-        eventsList: events
+        resp.send('événement ajouté !');
+    })
+    /*
+    app.get("/", function(req, resp) {
+        resp.render('index', {
+            name: 'Audrey',
+            // adjective: 'happy',
+            // nameList: db
+            eventsList: events
+        });
     });
+    */
+app.get("/", function(req, resp) {
+    let str = mustache.render(" Welcome {{name}}", {
+        name: "Audrey",
+        eventsList: events
+    })
+    resp.send(str)
 });
+
+
+
+
+
+
 
 
 
