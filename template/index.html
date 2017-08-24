@@ -23,7 +23,9 @@
             {{#eventsList}}
             <li>{{name}}
                 <li>{{place}}</li>
-                <button>supp</button>
+                <form action="/event/del" method="POST">
+                    <button>supp</button>
+                </form>
             </li>
             {{/eventsList}}
 
