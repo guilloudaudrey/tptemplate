@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static('template'));
+app.use(express.static('public'));
 
 
 app.post("/event/add", function(req, resp) {
@@ -35,8 +35,15 @@ app.post("/event/add", function(req, resp) {
     });
     */
 app.get("/", function(req, resp) {
+<<<<<<< HEAD
     let str = mustache.render(" Welcome {{name}}", {
         name: "Audrey",
+=======
+    resp.render('index', {
+        name: 'Hayet',
+        // adjective: 'happy',
+        // nameList: db
+>>>>>>> 6e12743c4a894eb3302392fa7ba9f4f4dda7251d
         eventsList: events
     })
     resp.send(str)
