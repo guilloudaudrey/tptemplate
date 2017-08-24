@@ -15,13 +15,16 @@
             font-family: 'Ubuntu', sans-serif;
         }
         
-        p {
+        h1 {
             margin-top: 20px;
             margin-left: 20px;
         }
         
-        .formulaire {
-            margin-left: 20px;
+        .container {
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -50,14 +53,26 @@
             </form>
         </div>
     </nav>
-    <p>Hello</p>
-    <div class="formulaire">
+    <h1 align="left">Hello</h1>
+    <div class="container">
         <form action="/event/add" method="POST">
-            <label for="event_name">Nom de l'événement</label>
-            <input type="text" class="event_input" name="nom">
-            <label for="event_name">Lieu</label>
-            <input type="text" class="event_input" name="place">
-            <button type="submit" class="btn btn-primary btn-md">Valider</button>
+            <div class="form-group row">
+                <label for="event_name" class="col-sm-2 col-form-label" placeholder="Nom de l'evenement">Nom de l'événement</label>
+                <div class="col-sm-10">
+                    <input type="text" class="event_input" name="nom">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="event_name" class="col-sm-2 col-form-label" placeholder="lieu">Lieu</label>
+                <div class="col-sm-10">
+                    <input type="text" class="event_input" name="place">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary btn-md">Valider</button>
+                </div>
+            </div>
             <p>Welcome {{name}}!!!</p>
 
             <ul>
