@@ -8,53 +8,31 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static('public'));
+app.use(express.static('template'));
 
 
 app.post("/event/add", function(req, resp) {
-        let nom = req.body.nom;
-        let place = req.body.place;
-        console.log(req.body.place);
-        let event = {
-            name: nom,
-            place: place,
-        }
-        events.push(event);
-        console.log(events);
+    let nom = req.body.nom;
+    let place = req.body.place;
+    console.log(req.body.place);
+    let event = {
+        name: nom,
+        place: place,
+    }
+    events.push(event);
+    console.log(events);
 
-        resp.send('événement ajouté !');
-    })
-    /*
-    app.get("/", function(req, resp) {
-        resp.render('index', {
-            name: 'Audrey',
-            // adjective: 'happy',
-            // nameList: db
-            eventsList: events
-        });
-    });
-    */
+    //resp.send('événement ajouté !');
+})
+
 app.get("/", function(req, resp) {
-<<<<<<< HEAD
-    let str = mustache.render(" Welcome {{name}}", {
-        name: "Audrey",
-=======
     resp.render('index', {
-        name: 'Hayet',
+        name: 'Audrey',
         // adjective: 'happy',
         // nameList: db
->>>>>>> 6e12743c4a894eb3302392fa7ba9f4f4dda7251d
         eventsList: events
-    })
-    resp.send(str)
+    });
 });
-
-
-
-
-
-
-
 
 
 app.engine("html", function(path, options, callback) {
@@ -73,5 +51,5 @@ app.set('view engine', 'html'); // register the template engine
 
 
 app.listen(8080, function() {
-    console.log('Example app listening on port 8080!');
+    console.log('Example app listening on port8080!');
 });
