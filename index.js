@@ -4,6 +4,8 @@ const fs = require('fs');
 let app = express();
 
 let events = [];
+
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,14 +24,14 @@ app.post("/event/add", function(req, resp) {
     events.push(event);
     console.log(events);
 
-    resp.send('événement ajouté !');
+    //   resp.send('événement ajouté !');
 })
 
 app.get("/", function(req, resp) {
     resp.render('index', {
         name: 'Hayet',
-        // adjective: 'happy',
-        // nameList: db
+        //adjective: 'happy',
+        //nameList: db,
         eventsList: events
     });
 });
