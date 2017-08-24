@@ -10,15 +10,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('template'));
 
-app.get("/", function(req, resp) {
-    resp.render('index', {
-        name: 'Audrey',
-        // adjective: 'happy',
-        // nameList: db
-        eventsList: events
-    });
-});
-
 
 app.post("/event/add", function(req, resp) {
     let nom = req.body.nom;
@@ -34,6 +25,14 @@ app.post("/event/add", function(req, resp) {
     resp.send('événement ajouté !');
 })
 
+app.get("/", function(req, resp) {
+    resp.render('index', {
+        name: 'Audrey',
+        // adjective: 'happy',
+        // nameList: db
+        eventsList: events
+    });
+});
 
 
 
