@@ -22,7 +22,7 @@ app.post("/event/add", function(req, resp) {
     events.push(event);
     console.log(events);
 
-    resp.send('événement ajouté !');
+    /*resp.send('événement ajouté !');*/
 })
 
 app.get("/", function(req, resp) {
