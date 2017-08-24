@@ -22,11 +22,8 @@ app.post("/event/add", function(req, resp) {
     events.push(event);
     console.log(events);
 
-<<<<<<< HEAD
     //resp.send('événement ajouté !');
-=======
     /*resp.send('événement ajouté !');*/
->>>>>>> 275955e4580d8247fcd397d98cece79c46c17ea7
 })
 
 app.get("/", function(req, resp) {
