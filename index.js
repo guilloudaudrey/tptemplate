@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 
 app.post("/event/add", function(req, resp) {
-    let nom = req.body.nom;
+    let nom = req.body.name;
     let place = req.body.place;
     console.log(req.body.place);
     let event = {
@@ -27,12 +27,8 @@ app.post("/event/add", function(req, resp) {
     //   resp.send('événement ajouté !');
 })
 
-app.post("/event/del", function(req, resp) {
-
-
-
-
-    //   resp.send('événement ajouté !');
+app.delete("/event/del", function(req, resp) {
+    res.send('DELETE request to homepage');
 })
 
 app.get("/", function(req, resp) {
