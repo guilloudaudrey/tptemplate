@@ -16,7 +16,7 @@ app.use(express.static('/public'));
 
 
 app.post("/event/add", function(req, resp) {
-    let nom = req.body.name;
+    let nom = req.body.nom;
     let place = req.body.place;
     console.log(req.body.place);
     let event = {
