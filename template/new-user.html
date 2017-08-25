@@ -5,18 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Zilla+Slab+Highlight" rel="stylesheet">
     <title>new-user</title>
+
+    <style type="text/css">
+        body {
+            background-color: #454141;
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        .container {
+            width: 100%;
+            margin: auto;
+            padding-top: 250px;
+            padding-left: 330px;
+            padding-bottom: 200px;
+        }
+        
+        #labpseudo {
+            color: whitesmoke;
+        }
+        
+        #labpass {
+            color: whitesmoke;
+        }
+    </style>
+
 </head>
 
 <body>
-    <form action="/user/add" method="post">
-        <label for="pseudo">Pseudo</label>
-        <input id="pseudo" type="text" name="pseudo">
-        <label for="pass">Password</label>
-        <input id="pass" type="password" name="password">
-        <input type="submit" value="valider">
+    <div class="container">
+        <form action="/user/add" method="post" class="form">
+            <div class="form-group row">
+                <label for="pseudo" class="col-sm-2 col-form-label" id="labpseudo">Pseudo</label>
+                <div class="center-block style=float:none">
+                    <input id="pseudo" type="text" name="pseudo" class="form-control is-valid" placeholder="pseudo" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pass" class="col-sm-2 col-form-label" id="labpass">Password</label>
+                <div class="center-block style=float:none">
+                    <input id=" pass " type="password " name="password " class="form-control is-valid " placeholder="password " required>
+                </div>
+            </div>
+            <button type="submit " class="btn btn-outline-success " value="valider ">Valider</button>
+    </div>
     </form>
+    </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js " integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4 " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js " integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1 " crossorigin="anonymous "></script>
 </body>
 
 </html>
