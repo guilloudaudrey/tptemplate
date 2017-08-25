@@ -91,8 +91,12 @@
             {{#eventsList}}
             <li>{{name}}
                 <li>{{place}}</li>
-                <form action="/event/del" method="POST">
-                    <button class="supp">supp</button>
+
+                <!--<a href="/event/del">supp</a>-->
+                <form action="/event/del" method="post">
+                    <!--<button class="supp">supp</button>-->
+                    <input type="submit" value="supp">
+                    <input type="hidden" value="{{id}}" name="id">
                 </form>
             </li>
             {{/eventsList}}
@@ -121,25 +125,25 @@
             xhr.send(params);
         })
 
-        let buttons = document.querySelectorAll('.supp');
-        for (let button of buttons) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                let xhr = new XMLHttpRequest();
-                xhr.open('DELETE', '/event/del', true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            console.log(xhr.responseText);
-                        } else {
-                            console.error('unexpected status code:', this.status);
-                        }
-                    }
-                };
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send(null);
-            })
-        }
+        // let buttons = document.querySelectorAll('.supp');
+        // for (let button of buttons) {
+        //     button.addEventListener('click', function(e) {
+        //         e.preventDefault();
+        //         let xhr = new XMLHttpRequest();
+        //         xhr.open('DELETE', '/event/del');
+        //         xhr.onreadystatechange = function() {
+        //             if (xhr.readyState === XMLHttpRequest.DONE) {
+        //                 if (xhr.status === 200) {
+        //                     console.log(xhr.responseText);
+        //                 } else {
+        //                     console.error('unexpected status code:', this.status);
+        //                 }
+        //             }
+        //         };
+        //         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //         xhr.send(null);
+        //     })
+        // }
 
         // setInterval(function() {
         //     let xhr = new XMLHttpRequest();

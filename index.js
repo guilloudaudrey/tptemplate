@@ -18,6 +18,7 @@ app.post("/event/add", function(req, resp) {
     let place = req.body.place;
     console.log(req.body.place);
     let event = {
+        id: events.length,
         name: nom,
         place: place,
     }
@@ -27,8 +28,10 @@ app.post("/event/add", function(req, resp) {
     //   resp.send('événement ajouté !');
 })
 
-app.delete("/event/del", function(req, resp) {
-    res.send('DELETE request to homepage');
+app.post("/event/del", function(req, resp) {
+    resp.send('DELETE request to homepage');
+    console.log(req.body);
+    events.splice(req.body.id, 1);
 })
 
 app.get("/", function(req, resp) {
