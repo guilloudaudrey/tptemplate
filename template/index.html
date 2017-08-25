@@ -6,35 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
 </head>
 
 <body>
-    <p>Hello</p>
+    <p>Hello {{name}}!</p>
 
-    <form action="/event/add" method="POST">
+    <form method="POST" action="/event/add">
         <label for="event_name">Nom de l'événement</label>
         <input type="text" class="event_input" name="nom">
         <label for="event_name">Lieu</label>
         <input type="text" class="event_input" name="place">
-        <button type="submit" class="btn btn-primary btn-md">Valider</button>
-        <p>Welcome {{name}}!!!</p>
-
-        <ul>
-            {{#eventsList}}
-            <li>{{name}}
-                <li>{{place}}</li>
-                <form action="/event/del" method="POST">
-                    <button>supp</button>
-                </form>
-            </li>
-            {{/eventsList}}
-
-        </ul>
-
-
+        <button type="submit" class="valider">Valider</button>
     </form>
+    <p>Welcome {{name}}!!!</p>
+    <ul>
+        {{#eventsList}}
+        <li>{{name}}
+            <li>{{place}}</li>
+            <form method="POST">
+                <button class="supp" name="supp">supp</button>
+            </form>
+        </li>
+        {{/eventsList}}
+
+    </ul>
+
     <script>
+        let button = document.querySelector('.valider');
+        button.addEventListener, 'click',
+            function() {
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', '/event/add');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText);
+                        } else {
+                            console.error('unexpected status code:', this.status);
+                        }
+                    }
+                };
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send(null);
+            }
+
+        let button1 = document.querySelector('.supp');
+        button.addEventListener, 'click',
+            function() {
+                let xhr = new XMLHttpRequest();
+                xhr.open('DELETE', '/event/del', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText);
+                        } else {
+                            console.error('unexpected status code:', this.status);
+                        }
+                    }
+                };
+
+                xhr.send(null);
+            }
     </script>
+
 </body>
 
 </html>
