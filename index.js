@@ -16,7 +16,7 @@ app.use(express.static('/public'));
 
 
 app.post("/event/add", function(req, resp) {
-    let nom = req.body.nom;
+    let nom = req.body.name;
     let place = req.body.place;
     console.log(req.body.place);
     let event = {
@@ -39,9 +39,13 @@ app.post("/user/add", function(req, resp) {
     users.push(user);
     console.log(users);
 
-})
+});
 
-
+app.get("/new-user.html", function(req, resp) {
+    resp.render('new-user', {
+        pseudo: 'pseudo',
+    });
+});
 
 app.delete("/event/del", function(req, resp) {
     res.send('DELETE request to homepage');
@@ -53,12 +57,6 @@ app.get("/", function(req, resp) {
         //adjective: 'happy',
         //nameList: db,
         eventsList: events
-    });
-});
-
-app.get("/new-user.html", function(req, resp) {
-    resp.render('new-user', {
-        pseudo: 'pseudo',
     });
 });
 
