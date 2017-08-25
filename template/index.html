@@ -97,14 +97,28 @@
                     <button type="submit" class="valider btn btn-light ">Valider</button>
                 </div>
             </div>
+<<<<<<< HEAD
         </form>
         <ul class="mustache">
+=======
+
+
+
+        </form>
+
+
+        <ul>
+>>>>>>> d7800a67d409d1794dc4c680d5219a7c9cd8c7f3
             {{#eventsList}}
             <li>{{name}}
                 <li>{{place}}</li>
                 <form action="/event/del" method="POST">
+<<<<<<< HEAD
                     <br>
                     <button type="button" class="supp btn btn-outline-warning">Supprimer</button>
+=======
+                    <button class="supp">supp</button>
+>>>>>>> d7800a67d409d1794dc4c680d5219a7c9cd8c7f3
                 </form>
             </li>
             {{/eventsList}}
@@ -132,10 +146,10 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.send(params);
         })
-
-        let button1 = document.querySelector('.supp');
-        button.addEventListener, 'click',
-            function() {
+        let buttons = document.querySelectorAll('.supp');
+        for (let button of buttons) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
                 let xhr = new XMLHttpRequest();
                 xhr.open('DELETE', '/event/del', true);
                 xhr.onreadystatechange = function() {
@@ -149,7 +163,23 @@
                 };
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send(null);
-            }
+            })
+        }
+        // setInterval(function() {
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.open('GET', '/', true);
+        //     xhr.onreadystatechange = function() {
+        //         if (xhr.readyState === XMLHttpRequest.DONE) {
+        //             if (xhr.status === 200) {
+        //                 console.log(xhr.response);
+        //             } else {
+        //                 console.error('unexpected status code:', this.status);
+        //             }
+        //         }
+        //     };
+        //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //     xhr.send(null);
+        // }, 500);
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

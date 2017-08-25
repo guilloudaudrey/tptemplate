@@ -4,13 +4,15 @@ const fs = require('fs');
 let app = express();
 
 let events = [];
+let users = [];
 
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static('public'));
+app.use(express.static('/public'));
+
 
 
 app.post("/event/add", function(req, resp) {
@@ -27,6 +29,24 @@ app.post("/event/add", function(req, resp) {
     //   resp.send('événement ajouté !');
 })
 
+app.post("/user/add", function(req, resp) {
+    let pseudo = req.body.pseudo;
+    let mdp = req.body.password;
+    let user = {
+        pseudo: pseudo,
+        password: password,
+    }
+    users.push(user);
+    console.log(users);
+
+});
+
+app.get("/new-user.html", function(req, resp) {
+    resp.render('new-user', {
+        pseudo: 'pseudo',
+    });
+});
+
 app.delete("/event/del", function(req, resp) {
     res.send('DELETE request to homepage');
 })
@@ -39,7 +59,6 @@ app.get("/", function(req, resp) {
         eventsList: events
     });
 });
-
 
 app.engine("html", function(path, options, callback) {
     fs.readFile(path, function(err, content) {
