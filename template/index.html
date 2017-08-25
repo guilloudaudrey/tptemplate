@@ -27,6 +27,16 @@
             font-size: 25px;
         }
         
+        .form {
+            background-color: #c7c6c6;
+            padding-top: 10px;
+        }
+        
+        ul.mustache {
+            padding-top: 20px;
+            background-color: #454141;
+        }
+        
         .container {
             color: whitesmoke;
             display: block;
@@ -63,7 +73,7 @@
     </nav>
     <h1 align="left">Hello {{name}}!</h1>
     <div class="container">
-        <form action="/event/add" method="POST">
+        <form action="/event/add" method="POST" class="form">
             <div class="form-group row">
                 <label for="event_name" class="col-sm-2 col-form-label" placeholder="Nom de l'evenement">Nom de l'événement</label>
                 <div class="col-sm-10">
@@ -82,12 +92,12 @@
                 </div>
             </div>
 
-            <ul>
+            <ul class="mustache">
                 {{#eventsList}}
                 <li>{{name}}
                     <li>{{place}}</li>
                     <form action="/event/del" method="POST">
-                        <button>supp</button>
+                        <button type="button" class="supp btn btn-outline-danger">Supprimer</button>
                     </form>
                 </li>
                 {{/eventsList}}
