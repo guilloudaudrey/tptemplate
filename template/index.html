@@ -28,12 +28,18 @@
         }
         
         .form {
-            background-color: #c7c6c6;
-            padding-top: 10px;
+            background-color: #fff832;
+            color: #454141;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-bottom: 20px;
+            width: 80%;
+            margin: auto;
         }
         
         ul.mustache {
             padding-top: 20px;
+            padding-left: 170px;
             background-color: #454141;
         }
         
@@ -73,11 +79,7 @@
     </nav>
     <h1 align="left">Hello {{name}}!</h1>
     <div class="container">
-<<<<<<< HEAD
-        <form action="/event/add" method="POST" class="form">
-=======
-        <form method="POST">
->>>>>>> 1477d475e55d8d7c7bd0dda01bc59ca97d806fa2
+        <form method="POST" class="form">
             <div class="form-group row">
                 <label for="event_name" class="col-sm-2 col-form-label" placeholder="Nom de l'evenement">Nom de l'événement</label>
                 <div class="col-sm-10">
@@ -92,28 +94,22 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <button type="submit" class="valider btn btn-primary btn-md ">Valider</button>
+                    <button type="submit" class="valider btn btn-light ">Valider</button>
                 </div>
             </div>
-
-            <ul class="mustache">
-                {{#eventsList}}
-                <li>{{name}}
-                    <li>{{place}}</li>
-                    <form action="/event/del" method="POST">
-<<<<<<< HEAD
-                        <button type="button" class="supp btn btn-outline-danger">Supprimer</button>
-=======
-                        <button class="supp">supp</button>
->>>>>>> 1477d475e55d8d7c7bd0dda01bc59ca97d806fa2
-                    </form>
-                </li>
-                {{/eventsList}}
-
-            </ul>
-
-
         </form>
+        <ul class="mustache">
+            {{#eventsList}}
+            <li>{{name}}
+                <li>{{place}}</li>
+                <form action="/event/del" method="POST">
+                    <br>
+                    <button type="button" class="supp btn btn-outline-warning">Supprimer</button>
+                </form>
+            </li>
+            {{/eventsList}}
+
+        </ul>
     </div>
     <script>
         document.querySelector('.valider').addEventListener('click', function(e) {
