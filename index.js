@@ -4,13 +4,15 @@ const fs = require('fs');
 let app = express();
 
 let events = [];
+let users = [];
 
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static('template'));
+app.use(express.static('/public'));
+
 
 
 app.post("/event/add", function(req, resp) {
@@ -27,23 +29,37 @@ app.post("/event/add", function(req, resp) {
     //   resp.send('événement ajouté !');
 })
 
+app.post("/user/add", function(req, resp) {
+    let pseudo = req.body.pseudo;
+    let mdp = req.body.password;
+    let user = {
+        pseudo: pseudo,
+        password: password,
+    }
+    users.push(user);
+    console.log(users);
+
+})
+
+
 app.post("/event/del", function(req, resp) {
-
-
-
-
     //   resp.send('événement ajouté !');
 })
 
 app.get("/", function(req, resp) {
     resp.render('index', {
-        name: 'Audrey',
-        // adjective: 'happy',
-        // nameList: db
+        name: 'Hayet',
+        //adjective: 'happy',
+        //nameList: db,
         eventsList: events
     });
 });
 
+app.get("/new-user.html", function(req, resp) {
+    resp.render('new-user', {
+        pseudo: 'pseudo',
+    });
+});
 
 app.engine("html", function(path, options, callback) {
     fs.readFile(path, function(err, content) {
@@ -60,6 +76,6 @@ app.set('views', './template'); // specify the views directory
 app.set('view engine', 'html'); // register the template engine
 
 
-app.listen(3000, function() {
-    console.log('Example app listening on port3000!');
+app.listen(8080, function() {
+    console.log('Example app listening on port8080!');
 });
