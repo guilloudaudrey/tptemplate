@@ -81,9 +81,6 @@
                     <button type="submit" class="valider btn btn-primary btn-md ">Valider</button>
                 </div>
             </div>
-
-
-
         </form>
 
 
@@ -93,9 +90,8 @@
                 <li>{{place}}</li>
 
 
-                <form action="/event/del" method="post">
-
-                    <input type="submit" value="supp">
+                <form method="POST">
+                    <input type="submit" value="supp" class="supp">
                     <input type="hidden" value="{{id}}" name="id">
                 </form>
             </li>
@@ -115,7 +111,7 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
-                        console.log(xhr.responseText);
+                        // console.log(xhr.responseText);
                     } else {
                         console.error('unexpected status code:', this.status);
                     }
@@ -130,7 +126,7 @@
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 let xhr = new XMLHttpRequest();
-                xhr.open('DELETE', '/event/del');
+                xhr.open('POST', '/event/del');
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {

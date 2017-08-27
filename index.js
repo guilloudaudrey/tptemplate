@@ -18,14 +18,14 @@ app.use(express.static('/public'));
 app.post("/event/add", function(req, resp) {
     let nom = req.body.name;
     let place = req.body.place;
-    console.log(req.body.place);
+    //console.log(req.body.place);
     let event = {
         id: events.length,
         name: nom,
         place: place,
     }
     events.push(event);
-    console.log(events);
+    // console.log(events);
 
     //   resp.send('événement ajouté !');
 })
