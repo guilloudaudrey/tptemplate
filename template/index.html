@@ -52,7 +52,7 @@
                     <a class="nav-link" href="#">Create event</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Create user</a>
+                    <a class="nav-link disabled" href="new-user.html">Create user</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -84,10 +84,10 @@
         </form>
 
 
-        <ul>
+        <ul class="evenements">
             {{#eventsList}}
-            <li>{{name}}
-                <li>{{place}}</li>
+            <li class="items">{{name}}
+                <li class="items">{{place}}</li>
 
 
                 <form method="POST">
@@ -106,6 +106,7 @@
             let place = document.querySelector(".event_place").value;
             let params = "name=" + nom + "&place=" + place;
             console.log(params);
+
             let xhr = new XMLHttpRequest();
             xhr.open('POST', '/event/add');
             xhr.onreadystatechange = function() {
@@ -131,6 +132,7 @@
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
                             console.log(xhr.responseText);
+
                         } else {
                             console.error('unexpected status code:', this.status);
                         }
@@ -141,25 +143,33 @@
             })
         }
 
-        // setInterval(function() {
-        //     let xhr = new XMLHttpRequest();
-        //     xhr.open('GET', '/', true);
-        //     xhr.onreadystatechange = function() {
-        //         if (xhr.readyState === XMLHttpRequest.DONE) {
-        //             if (xhr.status === 200) {
-        //                 console.log(xhr.response);
-        //             } else {
-        //                 console.error('unexpected status code:', this.status);
-        //             }
-        //         }
-        //     };
-        //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //     xhr.send(null);
-        // }, 500);
+        setInterval(function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/event/get', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        let events = JSON.parse(xhr.responseText);
+                        let ul = document.querySelector('.evenements');
+                        // ul.innerHTML = "";
+
+                        // for (let e of events) {
+                        //     let li = document.createElement('li');
+                        //     ul.appendChild(li);
+                        //     li.innerHTML += e.name;
+                        //     li.innerHTML += ' ' + e.place;
+                        //     console.log(e.name);
+                        // }
+                    } else {
+                        console.error('unexpected status code:', this.status);
+                    }
+                }
+            };
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send(null);
+        }, 1000);
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </body>
 
