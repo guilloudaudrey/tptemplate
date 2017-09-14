@@ -6,28 +6,41 @@ let app = express();
 let events = [];
 let users = [];
 
-
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('/public'));
 
-
+// ajouter un événement
 
 app.post("/event/add", function(req, resp) {
     let nom = req.body.name;
     let place = req.body.place;
-    console.log(req.body.place);
     let event = {
+        id: events.length,
         name: nom,
         place: place,
     }
     events.push(event);
-    console.log(events);
-
-    //   resp.send('événement ajouté !');
+    resp.send('événement ajouté !');
 })
+
+// supprimer un événement
+
+app.post("/event/del", function(req, resp) {
+    resp.send('DELETE request to homepage');
+    console.log(req.body);
+    events.splice(req.body.id, 1);
+});
+
+app.get("/event/get", function(req, resp) {
+
+    resp.setHeader('content-type', 'application/json');
+    resp.send(events);
+})
+
+// ajouter un utilisateur 
 
 app.post("/user/add", function(req, resp) {
     let pseudo = req.body.pseudo;
@@ -38,7 +51,6 @@ app.post("/user/add", function(req, resp) {
     }
     users.push(user);
     console.log(users);
-
 });
 
 app.get("/new-user.html", function(req, resp) {
@@ -47,15 +59,9 @@ app.get("/new-user.html", function(req, resp) {
     });
 });
 
-app.delete("/event/del", function(req, resp) {
-    res.send('DELETE request to homepage');
-})
-
 app.get("/", function(req, resp) {
     resp.render('index', {
         name: 'Hayet',
-        //adjective: 'happy',
-        //nameList: db,
         eventsList: events
     });
 });
