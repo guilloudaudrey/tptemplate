@@ -1,1 +1,0 @@
-Projet de groupe pour l'apprentissage de Node.js
