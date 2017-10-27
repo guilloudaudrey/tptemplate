@@ -61,7 +61,7 @@ app.get("/new-user.html", function(req, resp) {
 
 app.get("/", function(req, resp) {
     resp.render('index', {
-        name: 'Hayet',
+        name: '',
         eventsList: events
     });
 });
