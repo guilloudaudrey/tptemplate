@@ -61,7 +61,7 @@ app.get("/new-user.html", function(req, resp) {
 
 app.get("/", function(req, resp) {
     resp.render('index', {
-        name: '',
+        name: 'John',
         eventsList: events
     });
 });
@@ -81,6 +81,6 @@ app.set('views', './template'); // specify the views directory
 app.set('view engine', 'html'); // register the template engine
 
 
-app.listen(8080, function() {
-    console.log('Example app listening on port8080!');
+app.listen(3003, function() {
+    console.log('Example app listening on port3003!');
 });
